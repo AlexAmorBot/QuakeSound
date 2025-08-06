@@ -1,0 +1,139 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+#logo-overlay {
+  position: absolute;
+  top: 40px;
+  left: 100px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+#logo-overlay img {
+  height: 40px;
+  display: block;
+}
+
+.quake-popup .magnitude {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+.quake-popup .place {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.quake-popup .depth {
+  font-size: 0.85em;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+#key-box {
+  position: absolute;
+  bottom: 60px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+  font-size: 0.85em;
+  border-radius: 8px;
+  z-index: 1001;
+  max-width: 330px;
+  line-height: 1.4;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#key-box .key-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 1em;
+}
+
+#key-box .key-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#key-box .key-items li {
+  margin: 4px 0;
+}
+
+#key-box .note {
+  color: #666;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+span.note:nth-child(1) {
+    display: block;
+    padding-left: 1ch;
+}
+
+#key-box .feed-source {
+  color: #000;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 600px) {
+  #key-box {
+    font-size: 0.75em;
+    padding: 8px 10px;
+    max-width: 90vw;
+    bottom: 50px;
+    right: 5px;
+  }
+}
+
+.nav-toggle a.usgs-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9em;
+  margin-right: 10px;
+  margin-left: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-toggle a.usgs-link::after {
+  content: '|';
+  position: absolute;
+  right: -10px;
+  color: #999;
+}
+
+.nav-toggle a.usgs-link:last-child {
+  margin-right: 0;
+}
+
+.nav-toggle a.usgs-link:last-child::after {
+  content: '';
+}
+
+.nav-toggle a.usgs-link:hover {
+  color: #0077cc;
+}
+
+/* Highlight the active page */
+body[data-mode="hour"] .usgs-link[href="/"],
+body[data-mode="allday"] .usgs-link[href="/allday/"] {
+  font-weight: bold;
+  color: #222;
+  text-decoration: underline;
+}

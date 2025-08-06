@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About QuakeSound</title>
+  <meta name="author" content="Alex Amor">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="./favicon.png" type="image/png"/>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .about-image {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <img src="./images/quakesound-graphic-min.png" alt="QuakeSound visualization" class="about-image" />
+  <h1>About QuakeSound</h1>
+  <p><strong>QuakeSound</strong> is a generative soundscape web application that transforms real-time earthquake data into musical tones.</p>
+
+  <p>Each earthquake plays a sound where:</p>
+  <ul>
+    <li><strong>Pitch</strong> = Magnitude (higher magnitude = higher pitch)</li>
+    <li><strong>Note length</strong> = Depth (shallower = longer resonance)</li>
+  </ul>
+
+  <p>The app uses the <a href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes" target="_blank">USGS Earthquake GeoJSON Feed</a> and visualizes seismic activity on a Leaflet.js map with OpenStreetMap tiles. Sounds are generated using the Web Audio API in real time.</p>
+
+  <h2>Modes</h2>
+  <ul>
+    <li><a href="https://quakesound.com/">Real-Time Mode</a> — Shows and plays quakes from the past hour. Notes play on arrival.</li>
+    <li><a href="https://quakesound.com/allday/">Soundscape Mode</a> — Plays all quakes from the past day sequentially and loops continuously for an ambient effect.</li>
+  </ul>
+
+  <p>This project was created by <a href="https://github.com/AlexAmorBot" target="_blank">Alex Amor</a> and inspired by an exhibit at the Science Museum of Minnesota. It reflects a curiosity for turning real-world phenomena into interactive applications through sound, spatial visualization, and open-source tools. The development also demonstrates how modern AI can accelerate creative problem-solving, experimentation, and bring long-standing ideas to life.</p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuakeSound - Real-time Earthquake Sound Map</title>
+  <meta name="description" content="QuakeSound is a real-time earthquake sound map that plays a musical chime for each seismic event as it happens."/>
+  <meta name="author" content="Alex Amor">
+  <script type="speculationrules">
+    {
+      "prerender": [
+        { "source": "list", "urls": ["/allday/", "/"] }
+      ]
+    }
+  </script>
+  <link rel="icon" href="./favicon.png" type="image/png"/>
+  <link rel="preconnect" href="https://a.tile.openstreetmap.org" crossorigin>
+  <link rel="preconnect" href="https://b.tile.openstreetmap.org" crossorigin>
+  <link rel="preconnect" href="https://c.tile.openstreetmap.org" crossorigin>
+  <link rel="preconnect" href="https://earthquake.usgs.gov" crossorigin>
+  <link rel="preload" href="css/styles.css" as="style">
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></noscript>
+  <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" as="script" crossorigin="anonymous">
+  <link rel="preload" href="https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json" as="fetch" crossorigin="anonymous">
+  <link rel="modulepreload" href="/js/quakeManager.js">
+  <link rel="modulepreload" href="/js/soundEngine.js">
+</head>
+<body data-mode="hour">
+  <div id="logo-overlay">
+    <img src="./images/quakesound-logo.jpg" alt="QuakeSound Logo" />
+  </div>
+  <div id="map"></div>
+  <div id="key-box">
+    <div class="key-title">🎵 QuakeSound Key <span class="note">(click page for sound...and wait)</span></div>
+    <ul class="key-items">
+      <li><strong>Pitch</strong> = Magnitude <span class="note">(higher note, bigger quake)</span></li>
+      <li><strong>Note length</strong> = Depth <span class="note">(longer note, shallower quake)</span></li>
+      <li><strong>USGS Earthquake Feed</strong>: <span class="feed-source nav-toggle"><a href="/" class="usgs-link" aria-label="Last Hour Earthquakes">Last Hour</a><a href="/allday/" class="usgs-link" aria-label="Past Day Earthquakes">Past Day</a></span></li>
+    </ul>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+  <script type="module" src="js/map.js"></script>
+</body>
+</html>

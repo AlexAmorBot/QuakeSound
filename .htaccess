@@ -1,0 +1,51 @@
+# ---------------------------------------------
+# PERFORMANCE: Caching & Compression
+# ---------------------------------------------
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType text/javascript "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType application/json "access plus 1 hour"
+  ExpiresDefault "access plus 2 hours"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json
+</IfModule>
+
+# ---------------------------------------------
+# SECURITY: Basic Hardening
+# ---------------------------------------------
+
+# CSP headers
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org; connect-src 'self' https://earthquake.usgs.gov https://raw.githubusercontent.com; object-src 'none'; base-uri 'self';"
+
+# Prevent directory listing
+Options -Indexes
+
+# Prevent execution of scripts in uploads or data directories
+<DirectoryMatch "^.*/(uploads|data)/">
+  php_flag engine off
+</DirectoryMatch>
+
+# Prevent access to dot files
+<FilesMatch "^\\.">
+  Require all denied
+</FilesMatch>
+
+# Protect .htaccess itself
+<Files .htaccess>
+  Require all denied
+</Files>
+
+# Disable server signature
+ServerSignature Off
+
+# 404 page
+ErrorDocument 404 /404.html
