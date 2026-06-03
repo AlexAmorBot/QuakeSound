@@ -13,16 +13,26 @@
       max-width: 800px;
       margin: auto;
       line-height: 1.6;
+      background: #1a1a2e;
+      color: #e0e0e0;
     }
     h1 {
       font-size: 2em;
+      color: #fff;
+    }
+    h2 {
+      color: #fff;
+      margin-top: 1.6em;
     }
     a {
-      color: #007acc;
+      color: #4da6ff;
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
+    }
+    strong {
+      color: #fff;
     }
     .about-image {
       display: block;
@@ -36,15 +46,16 @@
 <body>
   <img src="./images/quakesound-graphic-min.png" alt="QuakeSound visualization" class="about-image" />
   <h1>About QuakeSound</h1>
-  <p><strong>QuakeSound</strong> is a generative soundscape web application that transforms real-time earthquake data into musical tones.</p>
+  <p><strong>QuakeSound</strong> is a generative soundscape web application that transforms real-time earthquake data into an ambient, musical soundscape.</p>
 
-  <p>Each earthquake plays a sound where:</p>
+  <p>Each earthquake plays a layered tone where:</p>
   <ul>
-    <li><strong>Pitch</strong> = Magnitude (higher magnitude = higher pitch)</li>
+    <li><strong>Pitch</strong> = Magnitude (higher magnitude = higher pitch), snapped to an A-minor pentatonic scale so overlapping quakes stay harmonious</li>
     <li><strong>Note length</strong> = Depth (shallower = longer resonance)</li>
+    <li><strong>Intensity</strong> = Magnitude (larger quakes get longer sustain, slower fades, and higher gain)</li>
   </ul>
 
-  <p>The app uses the <a href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes" target="_blank">USGS Earthquake GeoJSON Feed</a> and visualizes seismic activity on a Leaflet.js map with OpenStreetMap tiles. Sounds are generated using the Web Audio API in real time.</p>
+  <p>The app uses the <a href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes" target="_blank">USGS Earthquake GeoJSON Feed</a> and visualizes seismic activity on a dark Leaflet.js map (CartoDB Dark Matter tiles), with markers color-coded by magnitude (green → yellow → orange → red) and an expanding ripple animation on each sound trigger. Sounds are synthesized in real time with the Web Audio API using layered oscillators, shaped reverb, and dynamic gain scaling.</p>
 
   <h2>Modes</h2>
   <ul>

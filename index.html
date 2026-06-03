@@ -14,9 +14,10 @@
     }
   </script>
   <link rel="icon" href="./favicon.png" type="image/png"/>
-  <link rel="preconnect" href="https://a.tile.openstreetmap.org" crossorigin>
-  <link rel="preconnect" href="https://b.tile.openstreetmap.org" crossorigin>
-  <link rel="preconnect" href="https://c.tile.openstreetmap.org" crossorigin>
+  <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin>
+  <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossorigin>
+  <link rel="preconnect" href="https://c.basemaps.cartocdn.com" crossorigin>
+  <link rel="preconnect" href="https://d.basemaps.cartocdn.com" crossorigin>
   <link rel="preconnect" href="https://earthquake.usgs.gov" crossorigin>
   <link rel="preload" href="css/styles.css" as="style">
   <link rel="stylesheet" href="css/styles.css"/>
@@ -29,16 +30,32 @@
 </head>
 <body data-mode="hour">
   <div id="logo-overlay">
-    <img src="./images/quakesound-logo.jpg" alt="QuakeSound Logo" />
+    <img src="./images/quakesound-logo.png"
+         srcset="./images/quakesound-logo.png 1x, ./images/quakesound-logo-retina.png 2x"
+         alt="QuakeSound Logo" />
   </div>
+  <nav id="mode-switch" aria-label="Earthquake feed time range">
+    <a href="/" class="mode-option" aria-current="page" aria-label="Last Hour Earthquakes">Last Hour</a>
+    <a href="/allday/" class="mode-option" aria-label="Past Day Earthquakes">Past Day</a>
+  </nav>
   <div id="map"></div>
   <div id="key-box">
     <div class="key-title">🎵 QuakeSound Key <span class="note">(click page for sound...and wait)</span></div>
-    <ul class="key-items">
-      <li><strong>Pitch</strong> = Magnitude <span class="note">(higher note, bigger quake)</span></li>
-      <li><strong>Note length</strong> = Depth <span class="note">(longer note, shallower quake)</span></li>
-      <li><strong>USGS Earthquake Feed</strong>: <span class="feed-source nav-toggle"><a href="/" class="usgs-link" aria-label="Last Hour Earthquakes">Last Hour</a><a href="/allday/" class="usgs-link" aria-label="Past Day Earthquakes">Past Day</a></span></li>
-    </ul>
+    <div class="key-groups">
+      <div class="key-group">
+        <div class="key-row"><span class="key-k">Pitch</span><span class="key-v">Magnitude — higher note, bigger quake</span></div>
+        <div class="key-row"><span class="key-k">Note length</span><span class="key-v">Depth — longer note, shallower quake</span></div>
+      </div>
+      <div class="key-group key-group--live">
+        <div class="key-row"><span class="key-k">Quakes</span><span class="key-v"><span id="stat-total">0</span> loaded · max M<span id="stat-maxmag">—</span></span></div>
+        <div class="key-row"><span class="key-k">Latest</span><span class="key-v" id="stat-lastplace">—</span></div>
+        <div class="key-row"><span class="key-k">Activity</span><span id="quake-activity" class="quake-activity" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+      </div>
+    </div>
+    <div class="key-footer">
+      <span class="key-version">v2.0</span>
+      <a href="/v1/" class="key-archive-link">v1 archive ↗</a>
+    </div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
   <script type="module" src="js/map.js"></script>

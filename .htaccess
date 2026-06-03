@@ -24,7 +24,7 @@
 # ---------------------------------------------
 
 # CSP headers
-Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org; connect-src 'self' https://earthquake.usgs.gov https://raw.githubusercontent.com; object-src 'none'; base-uri 'self';"
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https://*.basemaps.cartocdn.com; connect-src 'self' https://earthquake.usgs.gov https://raw.githubusercontent.com; object-src 'none'; base-uri 'self';"
 
 # Prevent directory listing
 Options -Indexes

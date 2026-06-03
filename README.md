@@ -1,10 +1,11 @@
 # 🌍 QuakeSound
 
-**QuakeSound** is a generative soundscape web application that transforms real-time earthquake data into musical tones.
+**QuakeSound** is a generative soundscape web application that transforms real-time earthquake data into an ambient, musical soundscape.
 
-Each earthquake plays a tone:
-- 🎵 Pitch = Magnitude (lower pitch = small quake, higher pitch = large)
-- ⏱️ Note length = Depth (shallower = longer note)
+Each earthquake triggers a layered tone:
+- 🎵 Pitch = Magnitude (snapped to an A-minor pentatonic scale so overlapping quakes stay harmonious)
+- ⏱️ Note length = Depth (shallower = longer resonance)
+- 🔊 Larger quakes get longer sustain, slower fades, and higher gain — so big events feel significant
 
 ---
 
@@ -16,15 +17,36 @@ Each earthquake plays a tone:
 
 ## 🕹️ Available Views
 
-- [`/`](https://quakesound.com) — Real-time view using the **past hour** feed (near-instant audio trigger)
-- [`/allday`](https://quakesound.com/allday/) — Soundscape mode using the **past 24 hours** with continuous looping tone playback
+- [`/`](https://quakesound.com) — **Real-time** view using the **past hour** feed; sound triggers as quakes arrive
+- [`/allday`](https://quakesound.com/allday/) — **Soundscape** mode using the **past 24 hours**, looping continuously for an ambient effect
+- [`/v1`](https://quakesound.com/v1/) — Archived **v1** (original light-map, single-oscillator version)
+
+---
+
+## ✨ v2 Highlights
+
+**Audio**
+- Single shared `AudioContext` with a master gain + compressor bus
+- Layered oscillators per quake (triangle fundamental + sine octave + fifth)
+- Pentatonic frequency quantization for musical coherence
+- Magnitude-dependent attack / sustain / decay envelopes
+- Shaped exponential-decay reverb with a warm, low-passed tail
+- Dynamic gain scaling to prevent clipping during dense playback
+
+**Visual**
+- Dark CartoDB Dark Matter basemap
+- Magnitude color gradient (green → yellow → orange → red) with exponential radius scaling
+- Expanding ripple animation on each sound trigger
+- Glowing tectonic plate boundaries
+- Live stats panel (total quakes loaded, max magnitude, latest location, activity indicator)
+- Mobile-friendly collapsible legend and mode switch
 
 ---
 
 ## 🛠 Technologies
 
 - Leaflet.js
-- OpenStreetMap
+- CartoDB Dark Matter basemap (OpenStreetMap data)
 - Web Audio API
 - USGS GeoJSON Feed
 
