@@ -21,20 +21,33 @@
   <style>
     body {
       font-family: sans-serif;
-      padding: 20px;
-      max-width: 800px;
+      padding: 28px 20px 64px;
+      max-width: 40rem;
       margin: auto;
       line-height: 1.6;
       background: #1a1a2e;
       color: #e0e0e0;
     }
+    .about-nav {
+      display: flex;
+      gap: 1.1em;
+      margin: 0 0 22px;
+      font-size: 0.85em;
+    }
+    .about-nav a {
+      color: #9eb0c8;
+    }
     h1 {
-      font-size: 2em;
+      font-size: 1.7em;
+      font-weight: 600;
       color: #fff;
+      margin: 0 0 0.6em;
     }
     h2 {
       color: #fff;
-      margin-top: 1.6em;
+      font-size: 1.05em;
+      font-weight: 600;
+      margin-top: 1.8em;
     }
     a {
       color: #4da6ff;
@@ -43,6 +56,10 @@
     a:hover {
       text-decoration: underline;
     }
+    a:focus-visible {
+      outline: 2px solid #4da6ff;
+      outline-offset: 2px;
+    }
     strong {
       color: #fff;
     }
@@ -50,34 +67,41 @@
       display: block;
       max-width: 100%;
       height: auto;
-      margin: 0 auto 20px;
+      margin: 0 auto 22px;
       border-radius: 8px;
+    }
+    .credit {
+      margin-top: 1.8em;
+      color: #c8c8c8;
     }
   </style>
 </head>
 <body>
+  <nav class="about-nav" aria-label="QuakeSound">
+    <a href="/">Map</a>
+    <a href="/allday/">Past day</a>
+    <a href="https://github.com/AlexAmorBot/QuakeSound" rel="noopener noreferrer">Source</a>
+  </nav>
   <img src="./images/quakesound-graphic-min.png" alt="QuakeSound visualization" class="about-image" />
   <h1>About QuakeSound</h1>
-  <p><strong>QuakeSound</strong> is a generative soundscape web application that transforms real-time earthquake data into an ambient, musical soundscape.</p>
-
-  <p>Each earthquake plays a layered tone where:</p>
+  <p><strong>QuakeSound</strong> turns live earthquake data into a musical soundscape. Each event plays a layered tone.</p>
   <ul>
-    <li><strong>Pitch</strong> = Magnitude (higher magnitude = higher pitch), snapped to an A-minor pentatonic scale so overlapping quakes stay harmonious</li>
-    <li><strong>Note length</strong> = Depth (shallower = longer resonance)</li>
-    <li><strong>Intensity</strong> = Magnitude (larger quakes get longer sustain, slower fades, and higher gain)</li>
+    <li><strong>Pitch</strong> follows magnitude, snapped to an A minor pentatonic so overlaps stay consonant.</li>
+    <li><strong>Note length</strong> follows depth. Shallower events ring longer.</li>
+    <li><strong>Intensity</strong> follows magnitude. Larger events sustain longer, fade slower, and sit a little louder.</li>
   </ul>
 
-  <p>The app uses the <a href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes" target="_blank" rel="noopener noreferrer">USGS Earthquake GeoJSON Feed</a> and visualizes seismic activity on a dark Leaflet.js map (CartoDB Dark Matter tiles), with markers color-coded by magnitude (green → yellow → orange → red) and an expanding ripple animation on each sound trigger. Sounds are synthesized in real time with the Web Audio API using layered oscillators, shaped reverb, and dynamic gain scaling.</p>
+  <p>The feed is the <a href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes" target="_blank" rel="noopener noreferrer">USGS Earthquake GeoJSON feed</a>. The map is Leaflet on CARTO Dark Matter. Markers run from green to red by magnitude, and a ripple marks each note. Sound is synthesized in the browser: layered oscillators, a shaped reverb, and gain that eases off when many notes overlap.</p>
 
   <h2>Modes</h2>
   <ul>
-    <li><a href="https://quakesound.com/">Real-Time Mode</a> — Shows and plays quakes from the past hour. Notes play on arrival.</li>
-    <li><a href="https://quakesound.com/allday/">Soundscape Mode</a> — Plays all quakes from the past day sequentially and loops continuously for an ambient effect.</li>
+    <li><a href="/">Last hour</a> — notes fire as events arrive.</li>
+    <li><a href="/allday/">Past day</a> — the day’s quakes play in sequence and loop.</li>
   </ul>
 
-  <p>An earlier version of the map and synth remains at <a href="https://quakesound.com/v1/">/v1/</a>. It is not the current site.</p>
+  <p>An earlier map and synth remains at <a href="/v1/">/v1/</a>. It is not the current site.</p>
 
-  <p>This project was created by <a href="https://github.com/AlexAmorBot" target="_blank" rel="noopener noreferrer">Alex Amor</a> and inspired by an exhibit at the Science Museum of Minnesota. It reflects a curiosity for turning real-world phenomena into interactive applications through sound, spatial visualization, and open-source tools. The development also demonstrates how modern AI can accelerate creative problem-solving, experimentation, and bring long-standing ideas to life.</p>
+  <p class="credit">Alex Amor, after the Seismofon exhibit at the <a href="https://www.smm.org/" target="_blank" rel="noopener noreferrer">Science Museum of Minnesota</a>. Source: <a href="https://github.com/AlexAmorBot/QuakeSound" target="_blank" rel="noopener noreferrer">AlexAmorBot/QuakeSound</a>.</p>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -125,8 +149,8 @@
       "@type": "Person",
       "@id": "https://quakesound.com/#author",
       "name": "Alex Amor",
-      "url": "https://github.com/AlexAmorBot",
-      "sameAs": "https://github.com/AlexAmorBot"
+      "url": "https://github.com/AlexAmorBot/QuakeSound",
+      "sameAs": "https://github.com/AlexAmorBot/QuakeSound"
     },
     {
       "@type": "WebApplication",

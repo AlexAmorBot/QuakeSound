@@ -370,6 +370,18 @@ body[data-mode="allday"] #mode-switch .mode-option[href="/allday/"] {
   color: #bbb;
 }
 
+#key-box .key-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+}
+
+#key-box .key-dot {
+  color: #555;
+  font-size: 0.78em;
+  line-height: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .quake-activity.pulse i,
   #mode-switch .mode-option,

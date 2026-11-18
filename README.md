@@ -44,6 +44,6 @@ Leaflet, CARTO Dark Matter, the Web Audio API, and the USGS GeoJSON feed.
 
 GPL-3.0. Copyright (C) 2025 AlexAmorBot. Attribution required — see [LICENSE](LICENSE).
 
-Alex Amor — [github.com/AlexAmorBot](https://github.com/AlexAmorBot)
+Alex Amor — [AlexAmorBot/QuakeSound](https://github.com/AlexAmorBot/QuakeSound)
 
 Issues and discussions are open. Forks are welcome; keep the credit.
