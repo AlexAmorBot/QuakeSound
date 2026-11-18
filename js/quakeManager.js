@@ -252,9 +252,6 @@ async function fetchAndRender(map, feedURL, loop, maxLoopSize) {
         quakeMarker.on('mouseover', () => {
           quakeMarker.openPopup();
         });
-        quakeMarker.on('mouseout', () => {
-          quakeMarker.closePopup();
-        });
 
         quakeMarker.setStyle({ fillOpacity: 1 });
         setTimeout(() => quakeMarker.setStyle({ fillOpacity: 0.4 }), 300);
