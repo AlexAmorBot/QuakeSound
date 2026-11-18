@@ -1,69 +1,49 @@
-# 🌍 QuakeSound
+# QuakeSound
 
-**QuakeSound** is a generative soundscape web application that transforms real-time earthquake data into an ambient, musical soundscape.
+Generative soundscape that turns live USGS earthquakes into musical tones.
 
-Each earthquake triggers a layered tone:
-- 🎵 Pitch = Magnitude (snapped to an A-minor pentatonic scale so overlapping quakes stay harmonious)
-- ⏱️ Note length = Depth (shallower = longer resonance)
-- 🔊 Larger quakes get longer sustain, slower fades, and higher gain — so big events feel significant
+- Pitch follows magnitude, snapped to an A minor pentatonic so overlaps stay consonant.
+- Note length follows depth. Shallower events ring longer.
+- Larger magnitudes get more sustain, a slower fade, and more gain.
 
----
+Live: [quakesound.com](https://quakesound.com)
 
-## 🌐 Live Demo
+## Views
 
-👉 [https://quakesound.com](https://quakesound.com)
+- [/](https://quakesound.com/) — past hour. Notes fire as events arrive.
+- [/allday/](https://quakesound.com/allday/) — past day, looped.
+- [/about.html](https://quakesound.com/about.html) — short note on the project.
+- [/v1/](https://quakesound.com/v1/) — archived v1. Light OpenStreetMap basemap, single oscillator. Not indexed.
 
----
+## Run locally
 
-## 🕹️ Available Views
+Static site. No build step.
 
-- [`/`](https://quakesound.com) — **Real-time** view using the **past hour** feed; sound triggers as quakes arrive
-- [`/allday`](https://quakesound.com/allday/) — **Soundscape** mode using the **past 24 hours**, looping continuously for an ambient effect
-- [`/v1`](https://quakesound.com/v1/) — Archived **v1** (original light-map, single-oscillator version)
+```bash
+cp js/config.example.js js/config.js
+python3 -m http.server 8080
+```
 
----
+Paste a CARTO basemap key into `js/config.js`. Request one at [carto.com/basemaps/apikey](https://carto.com/basemaps/apikey/). The browser sends that key with tile requests, so it is not a server secret — it still does not belong in git.
 
-## ✨ v2 Highlights
+`scripts/check.sh` confirms the key is not in the tree and that the v1 tile origin is allowed.
 
-**Audio**
-- Single shared `AudioContext` with a master gain + compressor bus
-- Layered oscillators per quake (triangle fundamental + sine octave + fifth)
-- Pentatonic frequency quantization for musical coherence
-- Magnitude-dependent attack / sustain / decay envelopes
-- Shaped exponential-decay reverb with a warm, low-passed tail
-- Dynamic gain scaling to prevent clipping during dense playback
+v1 does not use the key. It loads `https://tile.openstreetmap.org`. The site CSP in `.htaccess` has to allow that origin, or the v1 basemap is blank while markers still draw.
 
-**Visual**
-- Dark CartoDB Dark Matter basemap
-- Magnitude color gradient (green → yellow → orange → red) with exponential radius scaling
-- Expanding ripple animation on each sound trigger
-- Glowing tectonic plate boundaries
-- Live stats panel (total quakes loaded, max magnitude, latest location, activity indicator)
-- Mobile-friendly collapsible legend and mode switch
+## v2, briefly
 
----
+Shared `AudioContext`, layered oscillators, pentatonic snap, magnitude envelopes, shaped reverb, and gain riding when many notes overlap.
 
-## 🛠 Technologies
+Dark CARTO basemap, magnitude color and radius, a ripple on each note, plate boundaries, a small live readout, and a collapsible legend on small screens.
 
-- Leaflet.js
-- CartoDB Dark Matter basemap (OpenStreetMap data)
-- Web Audio API
-- USGS GeoJSON Feed
+## Stack
 
----
+Leaflet, CARTO Dark Matter, the Web Audio API, and the USGS GeoJSON feed.
 
-## 🧾 License
+## License
 
-This project is licensed under [GPL-3.0](LICENSE). You are welcome to remix, fork, share, and even monetize — but **attribution is required**. Please retain a link back to the original project or creator.
+GPL-3.0. Copyright (C) 2025 AlexAmorBot. Attribution required — see [LICENSE](LICENSE).
 
----
+Alex Amor — [github.com/AlexAmorBot](https://github.com/AlexAmorBot)
 
-## 🤝 Attribution
-
-Created by [AlexAmorBot](https://github.com/AlexAmorBot), combining a love of building things with an interest in turning raw data into something unexpectedly fun.
-
----
-
-## 💬 Feedback & Forks
-
-Use GitHub Issues or Discussions. Forking encouraged — credit appreciated.
+Issues and discussions are open. Forks are welcome; keep the credit.

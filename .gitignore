@@ -1,2 +1,10 @@
+# Local basemap key. Copy js/config.example.js to js/config.js.
+js/config.js
+
 # Dev server logs
 server.log
+
+.DS_Store
+Thumbs.db
+.env
+.env.*

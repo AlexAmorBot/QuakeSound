@@ -20,6 +20,11 @@ html, body {
   z-index: 1000;
 }
 
+#logo-overlay a {
+  display: block;
+  line-height: 0;
+}
+
 #logo-overlay img {
   height: 40px;
   display: block;
@@ -250,6 +255,13 @@ span.note:nth-child(1) {
   color: #fff;
 }
 
+#mode-switch .mode-option:focus-visible,
+#key-box .key-archive-link:focus-visible,
+#key-box-toggle:focus-visible {
+  outline: 2px solid #4da6ff;
+  outline-offset: 2px;
+}
+
 body[data-mode="hour"] #mode-switch .mode-option[href="/"],
 body[data-mode="allday"] #mode-switch .mode-option[href="/allday/"] {
   background: #4da6ff;
@@ -341,19 +353,28 @@ body[data-mode="allday"] #mode-switch .mode-option[href="/allday/"] {
 
 #key-box .key-version {
   font-size: 0.78em;
-  color: #555;
+  color: #777;
   font-style: italic;
   letter-spacing: 0.01em;
 }
 
 #key-box .key-archive-link {
   font-size: 0.78em;
-  color: #555;
+  color: #777;
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: color 0.2s ease;
 }
 
 #key-box .key-archive-link:hover {
-  color: #999;
+  color: #bbb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quake-activity.pulse i,
+  #mode-switch .mode-option,
+  #key-box .key-archive-link {
+    animation: none;
+    transition: none;
+  }
 }

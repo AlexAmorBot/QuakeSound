@@ -6,6 +6,17 @@
   <title>QuakeSound All Day - Global Earthquake Sound Map</title>
   <meta name="description" content="QuakeSound All Day is a musical map of seismic activity using all earthquakes recorded in the last 24 hours."/>
   <meta name="author" content="Alex Amor">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://quakesound.com/allday/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="QuakeSound">
+  <meta property="og:title" content="QuakeSound — Past Day">
+  <meta property="og:description" content="A looped musical map of every earthquake recorded in the last 24 hours.">
+  <meta property="og:url" content="https://quakesound.com/allday/">
+  <meta property="og:image" content="https://quakesound.com/images/quakesound-graphic-min.png">
+  <meta property="og:image:alt" content="QuakeSound map graphic">
+  <meta name="twitter:card" content="summary_large_image">
   <script type="speculationrules">
     {
       "prerender": [
@@ -13,11 +24,8 @@
       ]
     }
   </script>
-  <link rel="icon" href="./favicon.png" type="image/png"/>
-  <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin>
-  <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossorigin>
-  <link rel="preconnect" href="https://c.basemaps.cartocdn.com" crossorigin>
-  <link rel="preconnect" href="https://d.basemaps.cartocdn.com" crossorigin>
+  <link rel="icon" href="../favicon.png" type="image/png"/>
+  <link rel="preconnect" href="https://basemaps.cartocdn.com" crossorigin>
   <link rel="preconnect" href="https://earthquake.usgs.gov" crossorigin>
   <link rel="preload" href="../css/styles.css" as="style">
   <link rel="stylesheet" href="../css/styles.css"/>
@@ -30,9 +38,11 @@
 </head>
 <body data-mode="allday">
   <div id="logo-overlay">
-    <img src="../images/quakesound-logo.png"
-         srcset="../images/quakesound-logo.png 1x, ../images/quakesound-logo-retina.png 2x"
-         alt="QuakeSound Logo" />
+    <a href="/" aria-label="QuakeSound home">
+      <img src="../images/quakesound-logo.png"
+           srcset="../images/quakesound-logo.png 1x, ../images/quakesound-logo-retina.png 2x"
+           alt="QuakeSound Logo" />
+    </a>
   </div>
   <nav id="mode-switch" aria-label="Earthquake feed time range">
     <a href="/" class="mode-option" aria-label="Last Hour Earthquakes">Last Hour</a>
@@ -59,5 +69,104 @@
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
   <script type="module" src="../js/map.js"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://quakesound.com/allday/#webpage",
+      "url": "https://quakesound.com/allday/",
+      "name": "QuakeSound — Past Day Soundscape",
+      "description": "Ambient generative soundscape playing all earthquakes from the past 24 hours in a continuous sequential loop. Pitch maps to magnitude; note duration maps to depth.",
+      "inLanguage": "en",
+      "image": "https://quakesound.com/images/quakesound-graphic-min.png",
+      "isPartOf": { "@id": "https://quakesound.com/#website" },
+      "about": { "@id": "https://quakesound.com/#app" },
+      "author": { "@id": "https://quakesound.com/#author" },
+      "breadcrumb": { "@id": "https://quakesound.com/allday/#breadcrumb" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://quakesound.com/#website",
+      "name": "QuakeSound",
+      "url": "https://quakesound.com",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://quakesound.com/#author",
+      "name": "Alex Amor",
+      "url": "https://github.com/AlexAmorBot",
+      "sameAs": "https://github.com/AlexAmorBot"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://quakesound.com/#app",
+      "name": "QuakeSound",
+      "url": "https://quakesound.com",
+      "applicationCategory": "MultimediaApplication",
+      "applicationSubCategory": "DataVisualization",
+      "operatingSystem": "Web",
+      "description": "Real-time earthquake sonification. Each seismic event triggers a musical tone — pitch maps to magnitude, note duration maps to focal depth.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/OnlineOnly"
+      },
+      "author": { "@id": "https://quakesound.com/#author" }
+    },
+    {
+      "@type": "Map",
+      "@id": "https://quakesound.com/allday/#map-allday",
+      "name": "QuakeSound — Past Day Seismic Soundscape Map",
+      "description": "Interactive world map displaying 24 hours of global earthquake activity, played back in a continuous ambient loop with audio sonification.",
+      "url": "https://quakesound.com/allday/",
+      "isPartOf": { "@id": "https://quakesound.com/#app" },
+      "about": {
+        "@type": "Thing",
+        "name": "Earthquake",
+        "sameAs": "https://www.wikidata.org/wiki/Q7944"
+      }
+    },
+    {
+      "@type": "ListenAction",
+      "@id": "https://quakesound.com/allday/#listen-action",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://quakesound.com/allday/",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform"
+        ]
+      },
+      "object": {
+        "@type": "AudioObject",
+        "name": "Earthquake soundscape — past 24 hours",
+        "description": "Generative ambient soundscape looping all seismic events from the past 24 hours sequentially. Each event plays as a musical tone derived from its magnitude and focal depth."
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://quakesound.com/allday/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Last Hour",
+          "item": "https://quakesound.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Past Day",
+          "item": "https://quakesound.com/allday/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </body>
 </html>

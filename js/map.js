@@ -8,11 +8,24 @@ const map = L.map('map', {
   maxZoom: 6
 });
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-  subdomains: 'abcd',
-  maxZoom: 19
-}).addTo(map);
+async function readCartoKey() {
+  try {
+    const mod = await import('./config.js');
+    return typeof mod.CARTO_KEY === 'string' ? mod.CARTO_KEY.trim() : '';
+  } catch {
+    return '';
+  }
+}
+
+const cartoKey = await readCartoKey();
+if (!cartoKey) {
+  console.warn('QuakeSound: basemap key missing. Copy js/config.example.js to js/config.js.');
+} else {
+  L.tileLayer(`https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=${encodeURIComponent(cartoKey)}`, {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(map);
+}
 
 // Initialize audio on first user interaction
 function handleInitialInteraction() {

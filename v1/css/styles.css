@@ -22,6 +22,11 @@ html, body {
   padding: 6px;
 }
 
+#logo-overlay a {
+  display: block;
+  line-height: 0;
+}
+
 #logo-overlay img {
   height: 40px;
   display: block;
@@ -131,9 +136,18 @@ span.note:nth-child(1) {
 }
 
 /* Highlight the active page */
-body[data-mode="hour"] .usgs-link[href="/"],
-body[data-mode="allday"] .usgs-link[href="/allday/"] {
+body[data-mode="hour"] .usgs-link[href="/v1/"],
+body[data-mode="allday"] .usgs-link[href="/v1/allday/"] {
   font-weight: bold;
   color: #222;
+  text-decoration: underline;
+}
+
+#key-box a.archive-home {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+#key-box a.archive-home:hover {
   text-decoration: underline;
 }

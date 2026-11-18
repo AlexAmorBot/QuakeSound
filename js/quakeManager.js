@@ -85,6 +85,7 @@ function buildPopupHtml(q) {
 }
 
 function triggerRipple(map, latlng, color = '#fff') {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const ripple = L.circleMarker(latlng, {
     radius: 4,
     color: color,
